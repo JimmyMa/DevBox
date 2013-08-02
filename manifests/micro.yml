@@ -1,0 +1,232 @@
+---
+deployment: appcloud
+
+# String '196.168.10.10' will be replaced with the real IP address
+
+jobs:
+- name: micro
+  template:
+  - postgres
+  - nats
+  - dea_next
+  - health_manager_next
+  - uaa
+  - login
+  - collector
+- name: micro_ng
+  template:
+  - cloud_controller_ng
+  - gorouter
+
+properties:
+  micro: true
+
+  networks:
+    apps: default
+    management: default
+
+  app_domains:
+    - cloudoe.one
+  system_domain: cloudoe.one
+  system_domain_organization: micro_org
+
+  domain: cloudoe.one
+  env:
+
+  cc_props: ccng
+  hm_props: health_manager_ccng
+
+  ccdb:
+    template: postgres
+    address: 127.0.0.1
+    port: 2545
+    databases:
+    - tag: cc
+      name: appcloud
+    - tag: uaa
+      name: uaa
+    roles:
+    - name: root
+      password:
+      tag: admin
+    - name: uaa
+      password:
+      tag: uaa
+
+  ccdb_ng:
+    address: 127.0.0.1
+    port: 2545
+    pool_size: 10
+    max_connections: 256
+    databases:
+    - tag: cc
+      name: appcloud_ng
+      citext: true
+    - tag: uaa
+      name: uaa_ng
+      citext: true
+    roles:
+    - name: root
+      password:
+      tag: admin
+    - name: uaa
+      password:
+      tag: uaa
+
+  uaadb:
+    db_scheme: postgresql
+    address: 127.0.0.1
+    port: 2545
+    roles:
+    - tag: admin
+      name: uaa
+      password:
+    databases:
+    - tag: uaa
+      name: uaa_ng
+
+  db: ccdb_ng
+
+  nats:
+    user: nats
+    password: nats
+    address: 127.0.0.1
+    port: 4222
+
+  router:
+    client_inactivity_timeout: 600
+    app_inactivity_timeout: 600
+    local_route: 127.0.0.1
+    status:
+      port: 8080
+      user:
+      password:
+
+  cc: &cc
+    description: "VMware's Micro Cloud Application Platform"
+    srv_api_uri: http://api.cloudoe.one
+    password: password
+    token: token
+    allow_debug: true
+    allow_registration: true
+    admins:
+    - admin@vcap.me
+    admin_account_capacity:
+      memory: 2048
+      app_uris: 32
+      services: 16
+      apps: 16
+    default_account_capacity:
+      memory: 2048
+      app_uris: 32
+      services: 16
+      apps: 16
+    staging_upload_user: qawsderfgt
+    staging_upload_password: qawsdefrgtyhu
+    uaa:
+      enabled: true
+      resource_id: cloud_controller
+      token_creation_email_filter: [""]
+    service_extension:
+      service_lifecycle:
+        max_upload_size: 5
+    use_nginx: false
+    bootstrap_admin_email: micro@vcap.me
+    uaa_resource_id: cloud_controller
+    quota_definitions:
+      free:
+        total_services: 10
+        free_memory_limit: 256
+        paid_memory_limit: 1024
+    admins:
+    db_encryption_key: "secret"
+    bulk_api_password: bulk_api_password
+
+  ccng: *cc
+
+  dea_next:
+    memory_mb: 2048
+    disk_mb: 8192
+    num_instances: 16
+
+  health_manager_ccng:
+    shadow_mode: disable
+    cc_partition: ng
+
+  uaa:
+    cc:
+      token_secret: token_sercret
+      client_secret: client_secret
+    client:
+      autoapprove: false
+    admin:
+      client_secret: client_secret
+    login:
+      client_secret: client_sercret
+    batch:
+      username: username
+      password: password
+    port: 8100
+    catalina_opts: -Xmx128m -Xms30m -XX:MaxPermSize=128m
+    scim:
+      users:
+        - micro@vcap.me|micr0@micr0|scim.write,scim.read,openid
+    client:
+      autoapprove:
+        - cf
+        - my
+        - portal
+        - micro
+        - support-signon
+        - login
+    clients:
+      support-services:
+        scope: scim.write,scim.read,openid,cloud_controller.read,cloud_controller.write
+        secret: ssosecretsso
+        id: support-services
+        authorized-grant-types: authorization_code,client_credentials
+        redirect-uri: http://support-signon.cf.vcap.me
+        authorities: portal.users.read
+        access-token-validity: 1209600
+        refresh-token-validity: 1209600
+      cf:
+        override: true
+        authorized-grant-types: password,implicit
+        authorities: uaa.none
+        scope: cloud_controller.read,cloud_controller.write,openid,password.write,cloud_controller.admin,scim.read,scim.write
+      login:
+        override: true
+        scope: openid
+        authorities: oauth.login
+        secret: c1oudc0w
+        authorized-grant-types: authorization_code,client_credentials,refresh_token
+        redirect-uri: http://login.cloudoe.one
+    no_ssl: true
+
+  uaa_client_id: cf
+  uaa_endpoint: http://uaa.cloudoe.one
+  uaa_client_auth_credentials:
+    username: micro@vcap.me
+    password: micr0@micr0
+
+  login:
+    protocol: http
+    links:
+      home: http://console.cloudoe.one
+      passwd: http://console.cloudoe.one
+      signup: http://console.cloudoe.one
+
+  collector:
+    deployment_name: cf
+    use_tsdb: false
+    use_aws_cloudwatch: false
+    use_datadog: false
+
+  serialization_data_server:
+    upload_timeout: 10
+    port: 8090
+    upload_token: upload_token
+
+  service_lifecycle:
+    serialization_data_server:
+      - 127.0.0.1
