@@ -18,7 +18,7 @@ if [ ! -d ${DEVBOX_WORKING_DIR}/nise_bosh ]; then
 fi
 (
   cd ${DEVBOX_WORKING_DIR}/nise_bosh
-  sudo ./bin/init
+#Jimmy  sudo ./bin/init
 )
 
 # Ruby
@@ -35,20 +35,20 @@ fi
 rbenv local 1.9.3-p448
 
 # BOSH CLI and CF commands
-gem install bundler --no-rdoc --no-ri
-gem install bosh_cli -v "~> 1.5.0.pre" --source https://s3.amazonaws.com/bosh-jenkins-gems/ --no-rdoc --no-ri
-gem install cf admin-cf-plugin --no-rdoc --no-ri
+#Jimmy gem install bundler --no-rdoc --no-ri
+#gem install bosh_cli -v "~> 1.5.0.pre" --source https://s3.amazonaws.com/bosh-jenkins-gems/ --no-rdoc --no-ri
+#gem install cf admin-cf-plugin --no-rdoc --no-ri
 rbenv rehash
 
 # cf-release
 ./clone_cf_release.sh
 ./create_cf_release.sh
 
-./clone_cf_services_release.sh
-./create_cf_release.sh
+#./clone_cf_services_release.sh
+#./create_cf_release.sh
 
-./clone_cf_services_contrib_release.sh
-./create_cf_services_contrib_release.sh
+#./clone_cf_services_contrib_release.sh
+#./create_cf_services_contrib_release.sh
 # Run
 ./launch_nise_bosh.sh
 

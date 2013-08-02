@@ -1,0 +1,111 @@
+---
+packages:
+- name: common
+  version: 0.1-dev
+  sha1: !binary |-
+    ZjYyMTE5NTJkZDIwMTA3ZTk5OGQ1YjNmOTkxYTU3ZTViZGZhMGMyYQ==
+  fingerprint: !binary |-
+    NDdlYWMzYzQxNmY4N2ViMGE2NDhiM2RmZTQ1NjMyYzY1NGQ2ZTY3Zg==
+  dependencies: []
+- name: mysqlclient
+  version: 0.1-dev
+  sha1: !binary |-
+    NDE2MWU1NDAwNmE4NGI1OGE4NTU2ZDhlMTUzZWVlZDY3YmFlNGZjZQ==
+  fingerprint: !binary |-
+    ODEwMDlmMmFkNzBjYzE4YjdlOGI4YWY2YTE4OTBhZWM1ZmNjOTM2OQ==
+  dependencies: []
+- name: mysql
+  version: 0.1-dev
+  sha1: !binary |-
+    MDE5MGM1ZWZhZDFhYTY3OTBkNWZkMmYyNDhlM2M5OWU0ZDE1ZWM3NQ==
+  fingerprint: !binary |-
+    YWZlZmYwMzFmMDkwNTdkNjNlOTViYWZiN2QzZGM4NjJhZTFjNmZkZg==
+  dependencies: []
+- name: mysql_node
+  version: 0.1-dev
+  sha1: !binary |-
+    MzdlNGY3YzA1MWVlNDJlMTc2NWZlMWM5YTc4YWE4ODQxOGFlNTAxYg==
+  fingerprint: !binary |-
+    YTk5NjhiMTllNjA0MWVkMDA2MzM0NWI1NThkZGEyYjMwYmZlM2MzYw==
+  dependencies:
+  - mysqlclient
+  - sqlite
+  - ruby
+- name: mysql55
+  version: 0.1-dev
+  sha1: !binary |-
+    MjA2M2E4Y2Q5YTFlODhlYzVlOTFjYzgzMTg5NjMyOTFiNmI4NDcwMQ==
+  fingerprint: !binary |-
+    ZTMwNDVkMjJlYTVjYjYzYTVkNzVmNTEwOGMzOGFkZDczNzA3NzBjOA==
+  dependencies: []
+- name: ruby_next
+  version: 0.1-dev
+  sha1: !binary |-
+    YmU4MmM4YTgxNDVmNmMzN2QyYjVkYjkxNDAwMTkwOWMzYWZmMTljYQ==
+  fingerprint: !binary |-
+    M2I3OGM2ZGY1ZTlmMzMzYTRjNTk5ODAyNjVkMzU4ZWVhNDI3YTNkNg==
+  dependencies:
+  - libyaml
+- name: ruby
+  version: 0.1-dev
+  sha1: !binary |-
+    OWNhY2EyYWZiMzJhNzVjMTRjYmI5NTgyYjZkYTg4OWQ1OWIzZTZjZA==
+  fingerprint: !binary |-
+    Yjg0MGYzYWRmMWZmYWRhOGUwMTkyNDA4NDg4MjFkYTMxODM4MmUyMA==
+  dependencies:
+  - libyaml
+- name: mysql_gateway
+  version: 0.1-dev
+  sha1: !binary |-
+    YTU5ODEyY2I1ZGUwMGJlZjMwZGM1N2IxNDIzYTgwOWFlNWE5NTY2OA==
+  fingerprint: !binary |-
+    ZmUyNjhjMTU3MTZkODU2Y2M5OWMzZDExNDNhODM3MWJjZWE4NzUzMg==
+  dependencies:
+  - mysqlclient
+  - sqlite
+  - ruby
+- name: syslog_aggregator
+  version: 0.1-dev
+  sha1: !binary |-
+    ZGU4OWQyOWQyM2ZhM2IyNWFkZDFhYjRhZTkxNzAwMGMyODJhYmI1Yw==
+  fingerprint: !binary |-
+    NDRiZTcwZjFhZjA5MjZkNTBiY2YzNjk4OGNmOTJkY2Y4YTIxMTNjZA==
+  dependencies:
+  - ruby_next
+- name: sqlite
+  version: 0.1-dev
+  sha1: !binary |-
+    ZTRmMDI5NTQzODIzMWUzMzFiM2Q4NTVjNDVjNmEwNjE4MGM2MDAxZQ==
+  fingerprint: !binary |-
+    ZTNlOWI2MWY4Y2RjMjYxMDQ4MGMyYWE4NDFlODlkYzBiYjFkYzljOQ==
+  dependencies: []
+- name: libyaml
+  version: 0.1-dev
+  sha1: !binary |-
+    NGEwYjM4OTM3M2IwMTAyNjhmMmEzZWI1ZTZjZTFjZDQ5YjZhMjAwNQ==
+  fingerprint: !binary |-
+    ODcwNmY2MTM1NTZmMWFlYmVlNzI5NDk1NjYyNmQ3MDYxZmIyZmE1ZA==
+  dependencies: []
+jobs:
+- name: mysql_node
+  version: 0.1-dev
+  fingerprint: !binary |-
+    MmM5ZjVhMTBhNTYyZjUzNjBiNjMzYmUwYTM3OTAyODUzYTAxMmY4Zg==
+  sha1: !binary |-
+    NzEyYmFhZDBlYThlZjMyN2JmM2MwOTc0N2ZiZjUxMjkxYWE2MmQ1YQ==
+- name: mysql_node_external
+  version: 0.1-dev
+  fingerprint: !binary |-
+    ZGU3YTExM2FiNGRmNzg5ODVmMDExMzYyNzhjYzNiMGFiN2YwNTlkMw==
+  sha1: !binary |-
+    Y2MyNmJjYzRmMTk1OTY3ODljN2RhZjRhNTc5Nzk4MWI5NGIxOWNkMA==
+- name: mysql_gateway
+  version: 0.1-dev
+  fingerprint: !binary |-
+    MmMyYzg0MTRlNDE5YTczOTU3MzAyYzUwN2FmMmU5Yzg5NGZiMTExYQ==
+  sha1: !binary |-
+    MDY5Njg0ODI3MDE5Yjc3NDQyNWFjZWIxZGQ2NTYxZDc4NTAyMDU5Nw==
+commit_hash: 3662ddd9
+uncommitted_changes: true
+name: services
+version: 0.1-dev
