@@ -2,5 +2,5 @@
 
 (
   cd ${DEVBOX_WORKING_DIR}/cf-release
-  bosh create release --force --non-interactive 
+  bosh --non-interactive create release --force  
 )

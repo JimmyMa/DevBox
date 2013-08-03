@@ -3,5 +3,5 @@ rbenv local 1.9.3-p448
 
 (
   cd ${DEVBOX_WORKING_DIR}/cf-services-contrib-release
-  bosh create release --force --non-interactive
+  bosh --non-interactive create release --force
 )

@@ -44,11 +44,11 @@ rbenv rehash
 ./clone_cf_release.sh
 ./create_cf_release.sh
 
-#./clone_cf_services_release.sh
-#./create_cf_services_release.sh
+./clone_cf_services_release.sh
+./create_cf_services_release.sh
 
-#./clone_cf_services_contrib_release.sh
-#./create_cf_services_contrib_release.sh
+./clone_cf_services_contrib_release.sh
+./create_cf_services_contrib_release.sh
 # Run
 ./launch_nise_bosh.sh
 

@@ -4,23 +4,10 @@ deployment: appcloud
 # String '196.168.10.10' will be replaced with the real IP address
 
 jobs:
-- name: micro
+- name: mongodb
   template:
-#  - postgres
-#  - nats
-#  - dea_next
-#  - health_manager_next
-#  - serialization_data_server
-#  - uaa
-#  - vcap_redis
-  - mysql_node
-  - mysql_gateway
-#  - postgresql_node_ng
-#  - postgresql_gateway
-#- name: micro_ng
-#  template:
-#  - cloud_controller_ng
-#  - gorouter
+  - mongodb_node
+  - mongodb_gateway
 
 properties:
   micro: true
@@ -30,18 +17,18 @@ properties:
     management: default
 
   app_domains:
-    - cloudoe.one
-  system_domain: cloudoe.one
+    - 196.168.10.10.xip.io
+  system_domain: 196.168.10.10.xip.io
   system_domain_organization: micro_org
 
   uaa_client_id: cf
-  uaa_endpoint: http://uaa.cloudoe.one
+  uaa_endpoint: http://uaa.196.168.10.10.xip.io
   uaa_client_auth_credentials:
     username: micro@vcap.me
     password: micr0@micr0
 
 
-  domain: cloudoe.one
+  domain: 196.168.10.10.xip.io
   env:
   cc_props: ccng
   hm_props: health_manager_ccng
@@ -108,7 +95,7 @@ properties:
 
   cc: &cc
     description: "VMware's Micro Cloud Application Platform"
-    srv_api_uri: http://api.cloudoe.one
+    srv_api_uri: http://api.196.168.10.10.xip.io
     password: password
     token: token
     allow_debug: true
@@ -180,9 +167,9 @@ properties:
   mongodb_gateway:
     ip_route: 127.0.0.1
     token: token
-    supported_versions: ["1.8", "2.0"]
+    supported_versions: ["1.8", "2.2"]
     version_aliases:
-      current: "2.0"
+      current: "2.2"
       deprecated: "1.8"
     cc_api_version: v2
   mongodb_node:
