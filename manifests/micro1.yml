@@ -7,14 +7,14 @@ jobs:
 - name: micro
   template:
   - postgres
-- name: micro_ng
-  template:
   - nats
   - dea_next
   - health_manager_next
   - uaa
   - login
   - collector
+- name: micro_ng
+  template:
   - cloud_controller_ng
   - gorouter
 
@@ -26,12 +26,15 @@ properties:
     management: default
 
   app_domains:
-    - 192.168.10.10.xip.io
-  system_domain: 192.168.10.10.xip.io
+    - cloudoe.one
+  system_domain: cloudoe.one
   system_domain_organization: micro_org
 
-  domain: 192.168.10.10.xip.io
+  domain: cloudoe.one
   env:
+
+  cc_props: ccng
+  hm_props: health_manager_ccng
 
   ccdb:
     template: postgres
@@ -87,7 +90,7 @@ properties:
   nats:
     user: nats
     password: nats
-    address: 192.168.10.10
+    address: 127.0.0.1
     port: 4222
 
   router:
@@ -101,7 +104,7 @@ properties:
 
   cc: &cc
     description: "VMware's Micro Cloud Application Platform"
-    srv_api_uri: http://api.192.168.10.10.xip.io
+    srv_api_uri: http://api.cloudoe.one
     password: password
     token: token
     allow_debug: true
@@ -197,11 +200,11 @@ properties:
         authorities: oauth.login
         secret: c1oudc0w
         authorized-grant-types: authorization_code,client_credentials,refresh_token
-        redirect-uri: http://login.192.168.10.10.xip.io
+        redirect-uri: http://login.cloudoe.one
     no_ssl: true
 
   uaa_client_id: cf
-  uaa_endpoint: http://uaa.192.168.10.10.xip.io
+  uaa_endpoint: http://uaa.cloudoe.one
   uaa_client_auth_credentials:
     username: micro@vcap.me
     password: micr0@micr0
@@ -209,9 +212,9 @@ properties:
   login:
     protocol: http
     links:
-      home: http://console.192.168.10.10.xip.io
-      passwd: http://console.192.168.10.10.xip.io
-      signup: http://console.192.168.10.10.xip.io
+      home: http://console.cloudoe.one
+      passwd: http://console.cloudoe.one
+      signup: http://console.cloudoe.one
 
   collector:
     deployment_name: cf
