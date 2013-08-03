@@ -18,7 +18,7 @@ if [ ! -d ${DEVBOX_WORKING_DIR}/nise_bosh ]; then
 fi
 (
   cd ${DEVBOX_WORKING_DIR}/nise_bosh
-#  sudo ./bin/init
+  sudo ./bin/init
 )
 
 # Ruby
