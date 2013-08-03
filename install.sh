@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-export DEVBOX_WORKING_DIR=${DEVBOX_WORKING_DIR:-~/devbox/workspace}
+export DEVBOX_WORKING_DIR=${DEVBOX_WORKING_DIR:-~/workspace}
 export DEVBOX_INSTALLER_DIR=$(pwd)
 
 if [ ! -d ${DEVBOX_WORKING_DIR} ]; then
@@ -18,7 +18,7 @@ if [ ! -d ${DEVBOX_WORKING_DIR}/nise_bosh ]; then
 fi
 (
   cd ${DEVBOX_WORKING_DIR}/nise_bosh
-#Jimmy  sudo ./bin/init
+  sudo ./bin/init
 )
 
 # Ruby
